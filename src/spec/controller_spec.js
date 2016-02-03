@@ -1,16 +1,23 @@
 'use strict';
 
-describe('myApp.view1 module', function() {
+describe('Heavens module', function() {
 
-  beforeEach(module('myApp.view1'));
+  beforeEach(module('Heavens'));
 
-  describe('view1 controller', function(){
+  var $controller;
 
-    it('should ....', inject(function($controller) {
-      //spec body
-      var view1Ctrl = $controller('View1Ctrl');
-      expect(view1Ctrl).toBeDefined();
-    }));
+  beforeEach(inject(function(_$controller_) {
+    $controller = _$controller_;
+  }));
+
+  describe('Heavens controller', function(){
+
+    beforeEach(function() {
+      $scope ={};
+      controller = $controller('HeavensController', {$scope: $scope});
+    });
+
+    it();
 
   });
 });

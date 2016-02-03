@@ -1,4 +1,4 @@
-## Heavans Retail Clothing
+## Heavens Retail Clothing
 
 Responsive website for a clothing retailer.
 
@@ -16,14 +16,14 @@ Build your project for the first time:
 
 To run live app:
 in `www` directory
-`npm start`
+`nhttp-server -a localhost -p 8000`
 
 To run unit tests:
 `npm test`
 
 
 To run e2e test:
-`npm run protractor`
+`protractor src/e2e-tests/protractor.conf.js`
 
 
 
@@ -38,3 +38,8 @@ To run e2e test:
  4 Use SOLID OOD (Single-responsiblity principle; Open-closed principle; Liskov substitution principle; Interface segregation principle and Dependency Inversion Principle)
 
  5 Iterate through user stories
+
+
+# User Stories
+
+As a User I can view the products and their category, price and availability information
