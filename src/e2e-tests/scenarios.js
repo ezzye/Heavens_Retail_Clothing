@@ -1,29 +1,6 @@
 'use strict';
 
 
-
-// As a User I can view the products and their category, price and availability information
-
-// Should render homepage when user navigates to home when # empty
-
-// Should render homepage when user navigates to home
-
-// Should render Women’s Footwear when user navigates to wfoot
-
-// Should render Men’s Footwear when user navigates to mfoot
-
-// Should render Women’s Casualwear when user navigates to wcasual
-
-// Should render Men’s Casualwear when user navigates to mcasual
-
-// Should render Women’s Formalwear when user navigates to wformal
-
-// Should render Men’s Formalwear when user navigates to mformal
-
-
-
-
-
 describe('Heavens', function() {
 
 
@@ -39,11 +16,23 @@ describe('Heavens', function() {
     expect(element(by.css('.page-header')).getText()).toEqual("Women’s Footwear");
   });
 
+  it('Women\'s footwear page should contain list of appropriate products', function() {
+    var el = element.all(by.css('.list-group-item')).get(1).getText();
+    el.click();
+    expect(element.all(by.css('.productName-item')).get(0).getText()).toEqual("Almond Toe Court Shoes");
+  });
+
   it('should get Men\’s Footwear page when link clicked', function() {
     var el = element.all(by.css('.list-group-item')).get(2).getText();
     expect(el).toEqual("Men’s Footwear");
     el.click();
     expect(element(by.css('.page-header')).getText()).toEqual("Men’s Footwear");
+  });
+
+  it('should get Men\’s Footwear page when link clicked', function() {
+    var el = element.all(by.css('.list-group-item')).get(2).getText();
+    el.click();
+    expect(element.all(by.css('.productName-item')).get(0).getText()).toEqual("Leather Driver Saddle Loafers");
   });
 
   it('should get Women\’s Casualwear page when link clicked', function() {
@@ -74,19 +63,26 @@ describe('Heavens', function() {
     expect(element(by.css('.page-header')).getText()).toEqual("Men’s Formalwear");
   });
 
-  // describe('home', function() {
-
-  //   beforeEach(function() {
-  //     browser.get('index.html#/home');
-  //   });
 
 
-  //   it('should render view1 when user navigates to /view1', function() {
-  //     expect(element.all(by.css('[ng-view] p')).first().getText()).
-  //       toMatch(/partial for view 1/);
-  //   });
 
-  // });
+  describe('adding product to basket', function() {
+
+    beforeEach(function() {
+      browser.get('index.html#/mcasual');
+    });
+
+
+    it('should add item to basket when ADD clicked', function() {
+      var el = element.all(by.css('.addButton')).first();
+      el.click();
+      var el2 = element(by.css('.basket'))
+      el2.click();
+      var el3 = element.all(by.css('.basket-item')).last().getText();
+      expect(el3).toEqual("Fine Stripe Short Sleeve Shirt");
+    });
+
+  });
 
 
   // describe('view2', function() {

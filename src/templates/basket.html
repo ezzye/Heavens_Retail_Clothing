@@ -1,0 +1,26 @@
+<section class="section container-fluid">
+  <div class="scrollable">
+
+      <div class="scrollable-header">
+        <h1 class="page-header text-center">BASKET</h1>
+      </div>
+
+      <div class="scrollable-content">
+      <div class="well">
+        <table class="table table-striped list-group">
+          <thead>
+            <tr>
+              <th>Product</th><th>Description</th><th>Color</th><th>Quantity</th><th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in MainCtrl.basket">
+              <th><img ng-src="{{item.image}}" class="img-thumbnail" width="50"></th>
+              <th class="basket-item">{{item.productName}}</th><th>{{item.color}}</th><th>{{item.quantity}}</th><th>{{item.price | currency:"£":2}}</th>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+  </div>
+</section>

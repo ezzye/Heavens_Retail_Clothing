@@ -13,5 +13,6 @@
   .when('/mcasual', {templateUrl:'mcasual.html', reloadOnSearch: false})
   .when('/wformal', {templateUrl:'wformal.html', reloadOnSearch: false})
   .when('/mformal', {templateUrl:'mformal.html', reloadOnSearch: false})
+   .when('/basket', {templateUrl:'basket.html', reloadOnSearch: false})
   .otherwise({redirectTo:'/', reloadOnSearch: false});
 });
