@@ -2,7 +2,7 @@
   <div class="scrollable">
 
       <div class="scrollable-header">
-      <div class="well">
+      <div class="well well-sm">
         <h1 class="page-header text-center">BASKET</h1>
       </div>
       </div>
@@ -21,8 +21,21 @@
               <th class="basket-item">{{item.productName}}</th><th>{{item.color}}</th><th>{{item.quantity}}</th><th>{{item.price | currency:"£":2}}</th>
               <th><button type="button"  ng-click="MainCtrl.removeFromBasket($index)" class="btn btn-default btn-xs removeButton">-ve</button></th>
             </tr>
+            <tr>
+              <th></th>
+              <th></th><th>Total</th><th></th><th class="total">{{MainCtrl.totalBasket() | currency:"£":2}}</th>
+              <th></th>
+            </tr>
           </tbody>
         </table>
+        <div class="well well-sm">
+          <form class="form-horizontal">
+            <input class="inputVoucher" type="text" ng-model="MainCtrl.voucherCode">
+            <button class="btn proceed" ng-click="MainCtrl.applyVoucher()">Apply Discount Voucher:</button>
+          </form>
+              <br>
+              <h5 class="amountDue">TOTAL AFTER DISCOUNT: {{MainCtrl.totalAfterDisc | currency:"£":2}}</h5>
+          </div>
         </div>
       </div>
   </div>

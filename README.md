@@ -16,7 +16,7 @@ Build your project for the first time:
 
 To run live app:
 in `www` directory
-`nhttp-server -a localhost -p 8000`
+`http-server -a localhost -p 8000`
 
 To run unit tests:
 `npm test`
@@ -24,6 +24,13 @@ To run unit tests:
 
 To run e2e test:
 `protractor src/e2e-tests/protractor.conf.js`
+
+
+To run unit tests
+`karma start karma.conf.js`
+
+Tested on Chrome simulating Samsung Galaxy S4 and standard Chrome browser.
+
 
 
 
@@ -40,6 +47,4 @@ To run e2e test:
  5 Iterate through user stories
 
 
-# User Stories
 
-As a User I can view the products and their category, price and availability information

@@ -141,6 +141,23 @@ angular.module('Heavens.controllers.Main', [])
 
   self.removeFromBasket = function(index) {
     self.basket.splice(index,1);
-  }
+  };
+
+  self.totalBasket = function() {
+    var total = 0;
+    self.basket.forEach(function(item) {
+      total += item.price;
+    });
+    return total;
+  };
+
+  self.totalAfterDisc = 0;
+
+  self.applyVoucher = function() {
+    self.totalAfterDisc = self.totalBasket();
+    if(self.voucherCode == '5PoundDiscount') {
+      self.totalAfterDisc  -= 5;
+    }
+  };
 
 });

@@ -168,6 +168,25 @@
       expect(Ctrl.basket[0].productName).toEqual("Bird Print Dress");
     });
 
+    it('Total basket', function() {
+      Ctrl.addToBasket(lineitem);
+      Ctrl.addToBasket(lineitem2);
+      Ctrl.removeFromBasket(0);
+      Ctrl.addToBasket(lineitem);
+      expect(Ctrl.totalBasket()).toEqual(810.00);
+    });
+
+    it('Apply £5 voucher', function() {
+      Ctrl.addToBasket(lineitem);
+      Ctrl.addToBasket(lineitem2);
+      Ctrl.removeFromBasket(0);
+      Ctrl.addToBasket(lineitem);
+      // expect(Ctrl.totalBasket()).toEqual(810.00);
+      Ctrl.voucherCode = '5PoundDiscount';
+      Ctrl.applyVoucher();
+      expect(Ctrl.totalAfterDisc).toEqual(805.00);
+    });
+
 
 
 });

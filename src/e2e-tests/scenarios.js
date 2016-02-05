@@ -107,4 +107,58 @@ describe('Heavens', function() {
     });
 
   });
+
+  describe('totalling the basket', function() {
+
+    beforeEach(function() {
+      browser.get('index.html#/mformal');
+    });
+
+
+    it('calculate total of basket', function() {
+      var el = element.all(by.css('.addButton')).first();
+      el.click();
+      var el2 = element.all(by.css('.addButton')).get(1);
+      el2.click();
+      el.click();
+      var el3 = element(by.css('.basket'))
+      el3.click();
+      var el4 = element.all(by.css('.removeButton')).first();
+      el4.click();
+      var el5 = element(by.css('.total')).getText();
+      expect(el5).toEqual("£250.00");
+    });
+
+  });
+
+  describe('totalling the basket', function() {
+
+    beforeEach(function() {
+      browser.get('index.html#/mformal');
+    });
+
+
+    it('apply £5 voucher to to Total', function() {
+      var el = element.all(by.css('.addButton')).first();
+      el.click();
+      var el2 = element.all(by.css('.addButton')).get(1);
+      el2.click();
+      el.click();
+      var el3 = element(by.css('.basket'))
+      el3.click();
+      var el4 = element.all(by.css('.removeButton')).first();
+      el4.click();
+      var el5 = element(by.css('.total')).getText();
+      expect(el5).toEqual("£250.00");
+      var el6 = element(by.css('.inputVoucher'));
+      var el7 = element(by.css('.proceed'));
+      var el8 = element(by.css('.amountDue'));
+      el6.sendKeys('5PoundDiscount');
+      el7.click();
+      expect(el8.getText()).toEqual("TOTAL AFTER DISCOUNT: £245.00");
+    });
+
+  });
+
 });
+
