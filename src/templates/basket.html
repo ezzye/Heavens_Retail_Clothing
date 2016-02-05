@@ -2,7 +2,9 @@
   <div class="scrollable">
 
       <div class="scrollable-header">
+      <div class="well">
         <h1 class="page-header text-center">BASKET</h1>
+      </div>
       </div>
 
       <div class="scrollable-content">
@@ -10,13 +12,14 @@
         <table class="table table-striped list-group">
           <thead>
             <tr>
-              <th>Product</th><th>Description</th><th>Color</th><th>Quantity</th><th>Price</th>
+              <th>Product</th><th>Desc.</th><th>Color</th><th>Qty</th><th>Price</th><th> -ve </th>
             </tr>
           </thead>
           <tbody>
             <tr ng-repeat="item in MainCtrl.basket">
               <th><img ng-src="{{item.image}}" class="img-thumbnail" width="50"></th>
               <th class="basket-item">{{item.productName}}</th><th>{{item.color}}</th><th>{{item.quantity}}</th><th>{{item.price | currency:"£":2}}</th>
+              <th><button type="button"  ng-click="MainCtrl.removeFromBasket($index)" class="btn btn-default btn-xs removeButton">-ve</button></th>
             </tr>
           </tbody>
         </table>

@@ -85,17 +85,26 @@ describe('Heavens', function() {
   });
 
 
-  // describe('view2', function() {
+  describe('removing product from basket', function() {
 
-  //   beforeEach(function() {
-  //     browser.get('index.html#/view2');
-  //   });
+    beforeEach(function() {
+      browser.get('index.html#/mformal');
+    });
 
 
-  //   it('should render view2 when user navigates to /view2', function() {
-  //     expect(element.all(by.css('[ng-view] p')).first().getText()).
-  //       toMatch(/partial for view 2/);
-  //   });
+    it('should remove item from basket when REMOVE clicked', function() {
+      var el = element.all(by.css('.addButton')).first();
+      el.click();
+      var el2 = element.all(by.css('.addButton')).get(1);
+      el2.click();
+      var el3 = element(by.css('.basket'))
+      el3.click();
+      var el4 = element.all(by.css('.removeButton')).first();
+      el4.click();
 
-  // });
+      var el5 = element.all(by.css('.basket-item')).last().getText();
+      expect(el5).toEqual("Lightweight Patch Pocket Blazer");
+    });
+
+  });
 });

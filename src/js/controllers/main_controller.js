@@ -116,16 +116,31 @@ angular.module('Heavens.controllers.Main', [])
 
   self.basket = [];
 
-  self.addToBasket = function(item) {
-    self.basket.push(
-      {
-        "image": item.image,
-        "productName": item.productName,
-        "color": item.color,
-        "price": item.price,
-        "quantity": 1
+  self.reduceStock = function(item) {
+    self.showProducts.products.forEach(function(obj) {
+      if(obj.productName === item.productName) {
+        obj.quantity --;
       }
-    );
+    });
   };
+
+  self.addToBasket = function(item) {
+    if(item.quantity > 0){
+      self.basket.push(
+        {
+          "image": item.image,
+          "productName": item.productName,
+          "color": item.color,
+          "price": item.price,
+          "quantity": 1
+        }
+      );
+      self.reduceStock(item);
+    }
+  };
+
+  self.removeFromBasket = function(index) {
+    self.basket.splice(index,1);
+  }
 
 });

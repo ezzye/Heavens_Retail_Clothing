@@ -131,13 +131,43 @@
         "quantity": 5
       };
 
+      var lineitem2 = {
+        "productName": "Bird Print Dress",
+        "color": "Black",
+        "category": "Womens Formalwear",
+        "price": 270.00,
+        "quantity": 10,
+        "image": "http://www.goldkidlondon.com/image/cache/data/dress/gk09/gk09-black/GK09_BLACK-BACK-11-746x1000.jpg"
+      };
+
     it('Show all products in every category', function() {
       expect(Ctrl.showProducts.products).toEqual(products);
     });
 
-    it('Show all products in every category', function() {
+    it('Add one item to basket', function() {
       Ctrl.addToBasket(lineitem);
       expect(Ctrl.basket[0].productName).toEqual("Mid Twist Cut-Out Dress");
+      expect(Ctrl.showProducts.products[12].quantity).toEqual(4);
     });
+
+    it('Only add item when there is stock', function() {
+      Ctrl.addToBasket(lineitem);
+      Ctrl.addToBasket(lineitem);
+      Ctrl.addToBasket(lineitem);
+      expect(Ctrl.basket[0].productName).toEqual("Mid Twist Cut-Out Dress");
+      expect(Ctrl.showProducts.products[12].quantity).toEqual(2);
+      Ctrl.addToBasket(lineitem);
+      Ctrl.addToBasket(lineitem);
+      expect(Ctrl.showProducts.products[12].quantity).toEqual(0);
+    });
+
+    it('Remove one item from basket', function() {
+      Ctrl.addToBasket(lineitem);
+      Ctrl.addToBasket(lineitem2);
+      Ctrl.removeFromBasket(0);
+      expect(Ctrl.basket[0].productName).toEqual("Bird Print Dress");
+    });
+
+
 
 });
